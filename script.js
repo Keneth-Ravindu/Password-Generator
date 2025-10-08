@@ -21,3 +21,26 @@ function createPassword() {
 
     passwordBox.value = password;
 }
+
+function copyPassword() {
+    if (!passwordBox.value) return;
+
+    passwordBox.select();
+    document.execCommand("copy");
+
+    const popup = document.createElement("div");
+    popup.className = "popup";
+    popup.textContent = "Password Copied!";
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add("show");
+    }, 10);
+    setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.remove(), 300);
+    }, 1500);
+}
+
+
+
